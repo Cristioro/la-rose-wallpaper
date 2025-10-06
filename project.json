@@ -128,11 +128,11 @@
 				"type" : "textinput",
 				"value" : "En su mirada habita el verano. Las flores se inclinan ante su canto silencioso, y el tiempo se detiene para admirar la perfección. Es la musa que respira entre pétalos y sueños."
 			},
-			"text3_content1" : 
+			"text4_content" : 
 			{
 				"index" : 21,
 				"order" : 121,
-				"text" : "text3_content",
+				"text" : "text4_content",
 				"type" : "textinput",
 				"value" : "Vestida de calma, camina entre luces moribundas. Su paso es un suspiro que disuelve la tarde, un adiós que florece en los labios del silencio. Allí donde pasa, la nostalgia florece."
 			},
@@ -176,11 +176,11 @@
 				"type" : "textinput",
 				"value" : "FLOWER"
 			},
-			"title3_text1" : 
+			"title4_text" : 
 			{
 				"index" : 20,
 				"order" : 120,
-				"text" : "title3_text",
+				"text" : "title4_text",
 				"type" : "textinput",
 				"value" : "La Dame"
 			},
