@@ -6,6 +6,7 @@
     --title-color: #fff;
     --text-color: #ccc;
     --border-color: #ccc;
+    --ruido-opacity: 0.05;
 }
 
 * {
@@ -16,6 +17,16 @@
 body {
     background-color: var(--background-color);
     font-family: var(--font);
+}
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    opacity: var(--ruido-opacity);
+    z-index: 0;
 }
 
 header {
@@ -52,6 +63,7 @@ header h1 {
     height: 100px;
     border: var(--border-color) 2px solid;
     border-radius: 15px;
+        transition: opacity 0.5s ease;
 }
 
 main {
