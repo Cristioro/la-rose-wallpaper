@@ -1,0 +1,203 @@
+{
+	"file" : "index.html",
+	"general" : 
+	{
+		"properties" : 
+		{
+			"background_color" : 
+			{
+				"index" : 1,
+				"order" : 101,
+				"text" : "background_color",
+				"type" : "color",
+				"value" : "0.11764705882352941 0.11764705882352941 0.11764705882352941"
+			},
+			"border_color" : 
+			{
+				"index" : 4,
+				"order" : 104,
+				"text" : "border_color",
+				"type" : "color",
+				"value" : "0.8 0.8 0.8"
+			},
+			"container2" : 
+			{
+				"index" : 10,
+				"order" : 110,
+				"text" : "container 2",
+				"type" : "group",
+				"value" : ""
+			},
+			"container3" : 
+			{
+				"index" : 14,
+				"order" : 114,
+				"text" : "Container 3",
+				"type" : "group",
+				"value" : ""
+			},
+			"container4" : 
+			{
+				"index" : 18,
+				"order" : 118,
+				"text" : "container 4",
+				"type" : "group",
+				"value" : ""
+			},
+			"grain_opacity" : 
+			{
+				"fraction" : true,
+				"index" : 5,
+				"max" : 0.3,
+				"min" : 0,
+				"order" : 105,
+				"precision" : 4,
+				"step" : 0.001,
+				"text" : "grain_opacity",
+				"type" : "slider",
+				"value" : 0.05
+			},
+			"imagenes" : 
+			{
+				"index" : 6,
+				"order" : 106,
+				"text" : "container 1",
+				"type" : "group",
+				"value" : ""
+			},
+			"img1_file" : 
+			{
+				"index" : 7,
+				"order" : 107,
+				"text" : "img1_file",
+				"type" : "file",
+				"value" : ""
+			},
+			"img2_file" : 
+			{
+				"index" : 11,
+				"order" : 111,
+				"text" : "img2_file",
+				"type" : "file",
+				"value" : ""
+			},
+			"img3_file" : 
+			{
+				"index" : 15,
+				"order" : 115,
+				"text" : "img3_file",
+				"type" : "file",
+				"value" : ""
+			},
+			"img4_file" : 
+			{
+				"index" : 19,
+				"order" : 119,
+				"text" : "img4_file",
+				"type" : "file",
+				"value" : ""
+			},
+			"schemecolor" : 
+			{
+				"order" : 0,
+				"text" : "ui_browse_properties_scheme_color",
+				"type" : "color",
+				"value" : "0 0 0"
+			},
+			"text1_content" : 
+			{
+				"index" : 9,
+				"order" : 109,
+				"text" : "text1_content",
+				"type" : "textinput",
+				"value" : "En su cabello florece el amanecer. Los susurros del viento despiertan los colores del alma, y cada trazo dorado anuncia el renacer de la belleza. Ella no mira: contempla el mundo desde la calma eterna."
+			},
+			"text2_content" : 
+			{
+				"index" : 13,
+				"order" : 113,
+				"text" : "text2_content",
+				"type" : "textinput",
+				"value" : "La ciudad vibra en su pecho como un acorde de luz. Entre flores y perfume, guarda la dulzura del instante. No hay reloj que mida su encanto, solo el aire tibio de una tarde sin fin."
+			},
+			"text3_content" : 
+			{
+				"index" : 17,
+				"order" : 117,
+				"text" : "text3_content",
+				"type" : "textinput",
+				"value" : "En su mirada habita el verano. Las flores se inclinan ante su canto silencioso, y el tiempo se detiene para admirar la perfección. Es la musa que respira entre pétalos y sueños."
+			},
+			"text3_content1" : 
+			{
+				"index" : 21,
+				"order" : 121,
+				"text" : "text3_content",
+				"type" : "textinput",
+				"value" : "Vestida de calma, camina entre luces moribundas. Su paso es un suspiro que disuelve la tarde, un adiós que florece en los labios del silencio. Allí donde pasa, la nostalgia florece."
+			},
+			"text_color" : 
+			{
+				"index" : 3,
+				"order" : 103,
+				"text" : "text_color",
+				"type" : "color",
+				"value" : "0.8 0.8 0.8"
+			},
+			"title" : 
+			{
+				"index" : 0,
+				"order" : 100,
+				"text" : "Title",
+				"type" : "textinput",
+				"value" : "La Rose"
+			},
+			"title1_text" : 
+			{
+				"index" : 8,
+				"order" : 108,
+				"text" : "title1_text",
+				"type" : "textinput",
+				"value" : "Alphonse"
+			},
+			"title2_text" : 
+			{
+				"index" : 12,
+				"order" : 112,
+				"text" : "title2_text",
+				"type" : "textinput",
+				"value" : "Champenois"
+			},
+			"title3_text" : 
+			{
+				"index" : 16,
+				"order" : 116,
+				"text" : "title3_text",
+				"type" : "textinput",
+				"value" : "FLOWER"
+			},
+			"title3_text1" : 
+			{
+				"index" : 20,
+				"order" : 120,
+				"text" : "title3_text",
+				"type" : "textinput",
+				"value" : "La Dame"
+			},
+			"title_color" : 
+			{
+				"index" : 2,
+				"order" : 102,
+				"text" : "title_color",
+				"type" : "color",
+				"value" : "1 1 1"
+			}
+		}
+	},
+	"preview" : "preview.jpg",
+	"snapshotformat" : -1,
+	"snapshotoverlay" : "",
+	"title" : "La Rose",
+	"type" : "web",
+	"version" : 0
+}
