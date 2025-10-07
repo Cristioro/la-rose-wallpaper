@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1920" height="1080" viewBox="0 0 1920 1080"
+     preserveAspectRatio="xMidYMid slice" >
+  <defs>
+    <!-- color y estilo común -->
+    <style>
+      .orn { fill: none; stroke: #d9c8a6; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; opacity: 0.06; }
+      .leaf { fill: #d9c8a6; opacity: 0.04; }
+    </style>
+
+    <!-- pequeño motivo floral para repetir -->
+    <g id="motif" transform="scale(1)">
+      <!-- tallo curvo -->
+      <path class="orn" d="M16 100 C 40 80, 40 40, 16 20" />
+      <path class="orn" d="M16 100 C 0 80, 0 40, 16 20" />
+      <!-- hojas -->
+      <path class="leaf" d="M16 20 C 10 14, 22 10, 30 18 C 22 18, 18 22, 16 20 Z" />
+      <path class="leaf" d="M16 80 C 10 74, 22 70, 30 78 C 22 78, 18 82, 16 80 Z" />
+      <!-- flor estilizada -->
+      <circle class="orn" cx="16" cy="50" r="6" />
+      <path class="orn" d="M16 44 C 10 40, 10 32, 16 28 C 22 32, 22 40, 16 44 Z" />
+    </g>
+
+    <!-- patrón en mosaico (repite el motivo en una rejilla) -->
+    <pattern id="ornPattern" x="0" y="0" width="220" height="220" patternUnits="userSpaceOnUse">
+      <rect width="220" height="220" fill="transparent" />
+      <!-- varios motivos en diferentes posiciones/rotaciones para variar -->
+      <use href="#motif" x="16" y="20" />
+      <use href="#motif" x="150" y="30" transform="scale(0.9) rotate(12 150 30)" />
+      <use href="#motif" x="40" y="140" transform="scale(1.05) rotate(-8 40 140)" />
+      <!-- un adorno linear fino adicional -->
+      <path class="orn" d="M0 0 L220 0" opacity="0.02" />
+    </pattern>
+  </defs>
+
+  <!-- fondo transparente -->
+  <rect width="100%" height="100%" fill="transparent" />
+
+  <!-- Overlay decorativo en todo el lienzo -->
+  <rect width="100%" height="100%" fill="url(#ornPattern)" opacity="1" />
+
+  <!-- un adorno central en baja opacidad -->
+  <g transform="translate(960,120) scale(1.6)" opacity="0.03">
+    <path class="orn" d="M0 0 C -40 30, -40 90, 0 120 C 40 90, 40 30, 0 0 Z" />
+    <path class="orn" d="M-12 20 C -30 40, -30 70, -12 90" />
+    <path class="orn" d="M12 20 C 30 40, 30 70, 12 90" />
+    <circle class="orn" cx="0" cy="60" r="10" />
+  </g>
+</svg>
