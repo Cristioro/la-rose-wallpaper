@@ -158,6 +158,9 @@ main {
     color: var(--text-color);
 }
 
+.center {
+    text-align: center;
+}
 .justify {
     text-align: justify;
     text-justify: inter-word;

@@ -61,144 +61,124 @@ function checkForNoMedia() {
 
 // settings
 
+// 🌟 Datos del modo Custom (7)
+let customData = {
+    title: 'La Rose',
+    items: [
+        { title: 'Alphonse', text: 'En su cabello florece el amanecer. Los susurros del viento despiertan los colores del alma, y cada trazo dorado anuncia el renacer de la belleza. Ella no mira: contempla el mundo desde la calma eterna.', image: 'assets/images/default1.jpg' },
+        { title: 'Champenois', text: 'La ciudad vibra en su pecho como un acorde de luz. Entre flores y perfume, guarda la dulzura del instante. No hay reloj que mida su encanto, solo el aire tibio de una tarde sin fin.', image: 'assets/images/default2.jpg' },
+        { title: 'The Flower', text: 'En su mirada habita el verano. Las flores se inclinan ante su canto silencioso, y el tiempo se detiene para admirar la perfección. Es la musa que respira entre pétalos y sueños.', image: 'assets/images/default3.jpg' },
+        { title: 'La Dame', text: 'Vestida de calma, camina entre luces moribundas. Su paso es un suspiro que disuelve la tarde, un adiós que florece en los labios del silencio. Allí donde pasa, la nostalgia florece.', image: 'assets/images/default4.jpg' }
+    ]
+};
+
+// 📦 Última plantilla seleccionada
+let currentTemplate = '1';
+
 window.wallpaperPropertyListener = {
     applyUserProperties: function (properties) {
 
-        // 🎨 Color de fondo
+        // === 🎨 COLORES Y ESTILO ===
         if (properties.background_color) {
-            let color = properties.background_color.value.split(' ').map(c => Math.ceil(c * 255));
-            let cssColor = `rgb(${color.join(',')})`;
-            document.documentElement.style.setProperty('--background-color', cssColor);
+            const color = properties.background_color.value.split(' ').map(c => Math.ceil(c * 255));
+            document.documentElement.style.setProperty('--background-color', `rgb(${color.join(',')})`);
         }
 
         if (properties.title_color) {
-            let color = properties.title_color.value.split(' ').map(c => Math.ceil(c * 255));
-            let cssColor = `rgb(${color.join(',')})`;
-            document.documentElement.style.setProperty('--title-color', cssColor);
+            const color = properties.title_color.value.split(' ').map(c => Math.ceil(c * 255));
+            document.documentElement.style.setProperty('--title-color', `rgb(${color.join(',')})`);
         }
 
-        // ✍️ Color del texto (y títulos)
         if (properties.text_color) {
-            let color = properties.text_color.value.split(' ').map(c => Math.ceil(c * 255));
-            let cssColor = `rgb(${color.join(',')})`;
-            document.documentElement.style.setProperty('--text-color', cssColor);
+            const color = properties.text_color.value.split(' ').map(c => Math.ceil(c * 255));
+            document.documentElement.style.setProperty('--text-color', `rgb(${color.join(',')})`);
         }
 
         if (properties.border_color) {
-            let color = properties.border_color.value.split(' ').map(c => Math.ceil(c * 255));
-            let cssColor = `rgb(${color.join(',')})`;
-            document.documentElement.style.setProperty('--border-color', cssColor);
+            const color = properties.border_color.value.split(' ').map(c => Math.ceil(c * 255));
+            document.documentElement.style.setProperty('--border-color', `rgb(${color.join(',')})`);
         }
 
         if (properties.justify_text) {
-            const shouldJustify = properties.justify_text.value; // true o false
-
+            const shouldJustify = properties.justify_text.value;
             for (let i = 1; i <= 4; i++) {
                 const textElement = document.getElementById(`text${i}`);
-                if (textElement) {
-                    if (shouldJustify) {
-                        textElement.classList.add('justify');
-                    } else {
-                        textElement.classList.remove('justify');
-                    }
-                }
+                if (!textElement) continue;
+                textElement.classList.toggle('justify', shouldJustify);
+                textElement.classList.toggle('center', !shouldJustify);
             }
         }
 
-        // 🌫️ Opacidad del grano
         if (properties.grain_opacity) {
-            let opacity = properties.grain_opacity.value;
-            document.documentElement.style.setProperty('--ruido-opacity', opacity);
+            document.documentElement.style.setProperty('--ruido-opacity', properties.grain_opacity.value);
         }
 
-        if (properties.cover_file && properties.cover_select.value === '1' && properties.cover_file.value) {
+        // === 🎧 MEDIA INTEGRATION ===
+        if (properties.cover_select && properties.cover_select.value === '1' && properties.cover_file) {
             const filePath = properties.cover_file.value;
-            const img = document.getElementById('mediaThumbnail');
-            if (filePath) {
-                img.src = 'file:///' + filePath;
-            } else {
-                img.src = 'assets/images/No_cover.webp';
-            }
-        } else if (properties.cover_select.value === '0') {
+            document.getElementById('mediaThumbnail').src = filePath
+                ? 'file:///' + filePath
+                : 'assets/images/No_cover.webp';
+        } else if (properties.cover_select && properties.cover_select.value === '0') {
             window.wallpaperRegisterMediaPropertiesListener(wallpaperMediaPropertiesListener);
             window.wallpaperRegisterMediaThumbnailListener(wallpaperMediaThumbnailListener);
         }
 
-        // 🖼️ Imagen 1
-        if (properties.img1_file) {
-            const filePath = properties.img1_file.value;
-            const img = document.getElementById('img1');
-            if (filePath) {
-                img.src = 'file:///' + filePath;
-            } else {
-                img.src = 'assets/images/Alphonse.jpg';
-            }
+        // === 📋 PLANTILLAS ===
+        if (properties.plantillas) {
+            currentTemplate = properties.plantillas.value;
         }
 
-        // 🖼️ Imagen 2
-        if (properties.img2_file) {
-            const filePath = properties.img2_file.value;
-            const img = document.getElementById('img2');
-            if (filePath) {
-                img.src = 'file:///' + filePath;
-            } else {
-                img.src = 'assets/images/Champenois.jpg';
-            }
-        }
+        // === 🧩 MODO CUSTOM (7) ===
+        if (currentTemplate === '7') {
+            // Título principal
+            if (properties.title) customData.title = properties.title.value || '';
 
-        // 🖼️ Imagen 3
-        if (properties.img3_file) {
-            const filePath = properties.img3_file.value;
-            const img = document.getElementById('img3');
-            if (filePath) {
-                img.src = 'file:///' + filePath;
-            } else {
-                img.src = 'assets/images/flower.jpg';
-            }
-        }
+            // Iterar los 4 elementos
+            for (let i = 1; i <= 4; i++) {
+                const titleKey = `title${i}_text`;
+                const textKey = `text${i}_content`;
+                const imgKey = `img${i}_file`;
 
-        // 🖼️ Imagen 4
-        if (properties.img4_file) {
-            const filePath = properties.img4_file.value;
-            const img = document.getElementById('img4');
-            if (filePath) {
-                img.src = 'file:///' + filePath;
-            } else {
-                img.src = 'assets/images/La_dame.jpg';
-            }
-        }
+                if (properties[titleKey])
+                    customData.items[i - 1].title = properties[titleKey].value || '';
 
-        //title
-        if (properties.title) {
-            const value = properties.title.value;
-            document.getElementById('title').textContent = value || '';
-        }
+                if (properties[textKey])
+                    customData.items[i - 1].text = properties[textKey].value || '';
 
-        // 📝 Títulos y textos container
-        for (let i = 1; i <= 4; i++) {
-            const titleKey = `title${i}_text`;
-            const textKey = `text${i}_content`;
-
-            // Cambiar título
-            if (properties[titleKey]) {
-                const value = properties[titleKey].value;
-                const titleElement = document.getElementById(`title${i}`);
-                if (titleElement) {
-                    titleElement.textContent = value || '';
+                if (properties[imgKey]) {
+                    const filePath = properties[imgKey].value;
+                    customData.items[i - 1].image = filePath
+                        ? 'file:///' + filePath
+                        : `assets/images/default${i}.jpg`;
                 }
             }
 
-            // Cambiar texto
-            if (properties[textKey]) {
-                const value = properties[textKey].value;
-                const textElement = document.getElementById(`text${i}`);
-                if (textElement) {
-                    textElement.textContent = value || '';
-                }
+            // 🔁 Actualizar la vista siempre que haya cambios
+            document.getElementById('title').textContent = customData.title;
+            for (let i = 1; i <= 4; i++) {
+                document.getElementById(`title${i}`).textContent = customData.items[i - 1].title;
+                document.getElementById(`text${i}`).textContent = customData.items[i - 1].text;
+                document.getElementById(`img${i}`).src = customData.items[i - 1].image;
             }
         }
 
+        // === 🏛️ PLANTILLAS PREDEFINIDAS ===
+        else {
+            const template = templates[currentTemplate];
+            if (template) {
+                document.getElementById('title').textContent = template.mainTitle;
+                for (let i = 0; i < template.items.length; i++) {
+                    const item = template.items[i];
+                    document.getElementById(`title${i + 1}`).textContent = item.title;
+                    document.getElementById(`text${i + 1}`).textContent = item.text;
+                    document.getElementById(`img${i + 1}`).src = item.image;
+                }
+            }
+        }
     }
 };
+
+
 
 
