@@ -65,13 +65,17 @@ body::after {
 }
 
 header {
+    position: relative;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     padding: 1rem;
 }
 
-header h1 {
+header>h1 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     font-size: 2rem;
     color: var(--title-color);
 }
@@ -154,6 +158,11 @@ main {
     border-radius: 15px;
     font-size: 0.7rem;
     color: var(--text-color);
+}
+
+.justify {
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 @media (min-width: 1600px) {

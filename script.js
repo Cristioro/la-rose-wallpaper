@@ -34,7 +34,7 @@ function wallpaperMediaThumbnailListener(event) {
 function resetThumbnail() {
     mediaThumbnail.style.opacity = 0;
     setTimeout(() => {
-        mediaThumbnail.src = 'assets/No_cover.jpg';
+        mediaThumbnail.src = 'assets/images/No_cover.webp';
         mediaThumbnail.style.opacity = 1;
     }, 300);
 }
@@ -57,10 +57,6 @@ function checkForNoMedia() {
         }
     }, 1000); // espera 1 segundo
 }
-
-// Registrar listeners
-window.wallpaperRegisterMediaPropertiesListener(wallpaperMediaPropertiesListener);
-window.wallpaperRegisterMediaThumbnailListener(wallpaperMediaThumbnailListener);
 
 
 // settings
@@ -94,10 +90,38 @@ window.wallpaperPropertyListener = {
             document.documentElement.style.setProperty('--border-color', cssColor);
         }
 
+        if (properties.justify_text) {
+            const shouldJustify = properties.justify_text.value; // true o false
+
+            for (let i = 1; i <= 4; i++) {
+                const textElement = document.getElementById(`text${i}`);
+                if (textElement) {
+                    if (shouldJustify) {
+                        textElement.classList.add('justify');
+                    } else {
+                        textElement.classList.remove('justify');
+                    }
+                }
+            }
+        }
+
         // 🌫️ Opacidad del grano
         if (properties.grain_opacity) {
             let opacity = properties.grain_opacity.value;
             document.documentElement.style.setProperty('--ruido-opacity', opacity);
+        }
+
+        if (properties.cover_file && properties.cover_select.value === '1' && properties.cover_file.value) {
+            const filePath = properties.cover_file.value;
+            const img = document.getElementById('mediaThumbnail');
+            if (filePath) {
+                img.src = 'file:///' + filePath;
+            } else {
+                img.src = 'assets/images/No_cover.webp';
+            }
+        } else if (properties.cover_select.value === '0') {
+            window.wallpaperRegisterMediaPropertiesListener(wallpaperMediaPropertiesListener);
+            window.wallpaperRegisterMediaThumbnailListener(wallpaperMediaThumbnailListener);
         }
 
         // 🖼️ Imagen 1
@@ -107,7 +131,7 @@ window.wallpaperPropertyListener = {
             if (filePath) {
                 img.src = 'file:///' + filePath;
             } else {
-                img.src = 'assets/Alphonse.jpg';
+                img.src = 'assets/images/Alphonse.jpg';
             }
         }
 
@@ -118,7 +142,7 @@ window.wallpaperPropertyListener = {
             if (filePath) {
                 img.src = 'file:///' + filePath;
             } else {
-                img.src = 'assets/Champenois.jpg';
+                img.src = 'assets/images/Champenois.jpg';
             }
         }
 
@@ -129,7 +153,7 @@ window.wallpaperPropertyListener = {
             if (filePath) {
                 img.src = 'file:///' + filePath;
             } else {
-                img.src = 'assets/flower.jpg';
+                img.src = 'assets/images/flower.jpg';
             }
         }
 
@@ -140,7 +164,7 @@ window.wallpaperPropertyListener = {
             if (filePath) {
                 img.src = 'file:///' + filePath;
             } else {
-                img.src = 'assets/La_dame.jpg';
+                img.src = 'assets/images/La_dame.jpg';
             }
         }
 
