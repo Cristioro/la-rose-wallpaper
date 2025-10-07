@@ -11,22 +11,6 @@ El proyecto presenta una colección de ilustraciones acompañadas de textos poé
 
 ---
 
-## 🧩 Estructura
-
-LaRose/
-├── index.html # Página principal
-├── style.css # Estilos del diseño
-├── script.js # Configuración e interacción
-├── plantilla.js # Plantilla de cada obra
-├── assets/
-│   ├── images/ # Arte
-│   ├── fonts/ # Fuentes
-│   └── svg/
-└── README.md # Este archivo
-
-
----
-
 ## ⚙️ Configuración
 
 1. Clona este repositorio:
